@@ -46,4 +46,18 @@ public class LoginStepDefinitions
     }
 
     // Add the remaining step definitions here
+
+[When("I enter invalid username and password")]
+public void WhenIEnterInvalidUsernameAndPassword()
+{
+    _loginPage.EnterUsername("invalid_user");
+    _loginPage.EnterPassword("wrong_sauce");
+    _loginPage.ClickLogin();
+}
+
+[Then("I should see an error message")]
+public void ThenIShouldSeeAnErrorMessage()
+{
+    Assert.IsTrue(_loginPage.ErrorMessageDisplayed());
+}
 }
