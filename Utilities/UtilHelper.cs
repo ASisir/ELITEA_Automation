@@ -1,24 +1,28 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-public class UtilHelper
+namespace Utilities
 {
-    private readonly IWebDriver _driver;
-
-    public UtilHelper(IWebDriver driver)
+    public class UtilHelper
     {
-        _driver = driver;
-    }
+        private readonly IWebDriver _driver;
 
-    public void GoToUrl(string url)
-    {
-        _driver.Navigate().GoToUrl(url);
-    }
+        public UtilHelper(IWebDriver driver)
+        {
+            _driver = driver;
+        }
 
-    public bool IsUrl(string url)
-    {
-        return _driver.Url == url;
-    }
+        public void GoToUrl(string url)
+        {
+            _driver.Navigate().GoToUrl(url);
+        }
 
-    // Add other utility methods here
+        public bool IsUrl(string url)
+        {
+            return _driver.Url == url;
+        }
+
+        // Add other utility methods here
+    }
 }
+

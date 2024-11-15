@@ -1,7 +1,10 @@
 using TechTalk.SpecFlow;
-using ELITEADemo.PageObjects;
-using ELITEADemo.Utilities;
+using PageObjects;
+using Utilities;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using TechTalk.SpecFlow.NUnit;
+using NUnit.Framework;
 
 [Binding]
 public class LoginStepDefinitions
