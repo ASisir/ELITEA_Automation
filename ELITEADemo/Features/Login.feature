@@ -28,3 +28,15 @@ Scenario: Successful logout
 Given User is logged in
 When User clicks on the logout button
 Then User should be redirected to the login page
+
+Scenario: Successful Login with valid credentials
+    Given I am on the login page
+    When I enter valid username and password
+    And I click on the login button
+    Then I should be redirected to the products page
+
+  Scenario: Unsuccessful Login with invalid credentials
+    Given I am on the login page
+    When I enter invalid username and password
+    And I click on the login button
+    Then I should see an error message
