@@ -4,29 +4,27 @@ namespace PageObjects
 {
     public class LoginPage
     {
-        private readonly IWebDriver _driver;
-        private readonly By _usernameField = By.XPath("//input[@id='user-name']");
-        private readonly By _passwordField = By.XPath("//input[@id='password']");
-        private readonly By _loginButton = By.XPath("//input[@id='login-button']");
+        private IWebDriver _driver;
 
         public LoginPage(IWebDriver driver)
         {
             _driver = driver;
         }
 
-        public void EnterUsername(string username)
+        private IWebElement UsernameInput => _driver.FindElement(By.Id("user-name"));
+        private IWebElement PasswordInput => _driver.FindElement(By.Id("password"));
+        private IWebElement LoginButton => _driver.FindElement(By.Id("login-button"));
+
+        public void EnterCredentials(string username, string password)
         {
-            _driver.FindElement(_usernameField).SendKeys(username);
+            UsernameInput.SendKeys(username);
+            PasswordInput.SendKeys(password);
+            LoginButton.Click();
         }
 
-        public void EnterPassword(string password)
+        public bool IsErrorMessageDisplayed()
         {
-            _driver.FindElement(_passwordField).SendKeys(password);
-        }
-
-        public void ClickLogin()
-        {
-            _driver.FindElement(_loginButton).Click();
+            return _driver.FindElement(By.CssSelector(".error-message-container")).Displayed;
         }
     }
 }
